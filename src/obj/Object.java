@@ -3,9 +3,9 @@ package obj;
 import java.util.ArrayList;
 
 class Lost {
-    String name;
+    private String name;
     private int time;
-    String place;
+    private String place;
 
     public Lost() {
     }
@@ -42,9 +42,38 @@ class Lost {
 }
 
 class CardLost extends Lost {
+    private int id;
+    private String type="card";
+
+    public String getType() {
+        return type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public CardLost(int id) {
+        this.id = id;
+    }
+
+    public CardLost(String name, int time, String place, int id) {
+        super(name, time, place);
+        this.id = id;
+    }
 }
 
 class BookLost extends Lost {
+    private String type="book";
+
+    public String getType() {
+        return type;
+    }
+
     public BookLost(){}
 
     public BookLost(String name,int time,String place){
@@ -92,7 +121,7 @@ public class Object {
         };
         Object solution=new Object();
         solution.sortLost(losts);
-        System.out.println(losts[4].name);//斗破苍穹
+        System.out.println(losts[4].getName());//斗破苍穹
         Lost[] newArr=solution.selectByKeyword(losts,"2教");//星辰变
         System.out.println(newArr[0].getName());
     }
